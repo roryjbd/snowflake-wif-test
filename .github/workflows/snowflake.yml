@@ -39,7 +39,7 @@ jobs:
           python - <<'PY'
           import os, snowflake.connector
           conn = snowflake.connector.connect(
-            account='TEDYZXG-INFINITYWORKSPARTNER'
+            account='TEDYZXG-INFINITYWORKSPARTNER',
             authenticator='WORKLOAD_IDENTITY',
             workload_identity_provider='OIDC',
             token=os.environ["OIDC_TOKEN"]
