@@ -44,11 +44,6 @@ jobs:
             workload_identity_provider='OIDC',
             token=os.environ["OIDC_TOKEN"]
           )
-          cur = conn.cursor()
-          try:
-              cur.execute("select current_user()")
-              print(cur.fetchall())
-          finally:
-              cur.close()
-              conn.close()
+          with conn, conn.cursor() as cur:
+              print(cur.execute("select current_user()").fetchall())
           PY
